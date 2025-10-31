@@ -1,9 +1,16 @@
+import React from "react";
+
 interface ThermalReceiptProps {
     clientName: string;
     cpfOrCode: string;
     valorRetirado: number;
     saldoRestante: number;
     dataHora: string;
+}
+
+interface ReceiptContentProps extends ThermalReceiptProps {
+    via: string;
+    isLast?: boolean;
 }
 
 const ReceiptContent = ({
@@ -13,20 +20,22 @@ const ReceiptContent = ({
     saldoRestante,
     dataHora,
     via,
-}: ThermalReceiptProps & { via: string }) => (
-    <div className="p-4 max-w-[80mm] mx-auto font-mono text-sm page-break">
+    isLast = false,
+}: ReceiptContentProps) => (
+    <div
+        className={`p-4 max-w-[80mm] mx-auto font-mono text-sm ${!isLast ? "page-break" : ""
+            }`}
+    >
         <div className="text-center border-b-2 border-dashed border-black pb-3 mb-3">
             <h1 className="text-xl font-bold">FERRAGENS NATAL</h1>
             <p className="text-xs mt-1">COMPROVANTE DE RETIRADA</p>
             <p className="text-xs font-bold mt-1">{via}</p>
         </div>
-
         <div className="space-y-2 text-xs">
             <div className="flex justify-between">
                 <span>Data/Hora:</span>
                 <span className="font-bold">{dataHora}</span>
             </div>
-
             <div className="border-t border-dashed border-black pt-2 mt-2">
                 <div className="flex justify-between">
                     <span>Cliente:</span>
@@ -37,7 +46,6 @@ const ReceiptContent = ({
                     <span className="font-bold">{cpfOrCode}</span>
                 </div>
             </div>
-
             <div className="border-t border-dashed border-black pt-2 mt-2">
                 <div className="flex justify-between text-lg">
                     <span>Valor Retirado:</span>
@@ -49,14 +57,12 @@ const ReceiptContent = ({
                 </div>
             </div>
         </div>
-
         {via === "VIA LOJA - ASSINATURA DO CLIENTE" && (
             <div className="mt-6 pt-4 border-t border-dashed border-black">
                 <p className="text-xs mb-8">Assinatura do Cliente:</p>
                 <div className="border-t border-black w-full"></div>
             </div>
         )}
-
         <div className="text-center text-xs mt-4 pt-3 border-t-2 border-dashed border-black">
             <p>Obrigado pela preferência!</p>
         </div>
@@ -89,11 +95,9 @@ export const ThermalReceipt = ({
             font-size: 12pt;
             color: black;
             background: white;
-          }.page-break {
-            page-break-after: always;
           }
-          .page-break:last-child {
-            page-break-after: auto;
+          .page-break {
+            break-after: page;
           }
           @page {
             size: 80mm auto;
@@ -111,7 +115,6 @@ export const ThermalReceipt = ({
                 dataHora={dataHora}
                 via="VIA LOJA - ASSINATURA DO CLIENTE"
             />
-
             {/* Via 2 - Para o cliente */}
             <ReceiptContent
                 clientName={clientName}
@@ -120,6 +123,7 @@ export const ThermalReceipt = ({
                 saldoRestante={saldoRestante}
                 dataHora={dataHora}
                 via="VIA CLIENTE"
+                isLast
             />
         </div>
     );

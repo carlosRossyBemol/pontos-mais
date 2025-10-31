@@ -6,7 +6,7 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <QueryProvider>
-    <BrowserRouter>
+    <BrowserRouter basename="/pontos-mais">
       <App />
     </BrowserRouter>
   </QueryProvider>

@@ -226,9 +226,12 @@ export const RegisterPurchase = () => {
           {bonusGerado > 0 && (
             <p className="text-sm font-bold text-success">💰 Bônus de R$ {bonusGerado.toFixed(2)} concedido!</p>
           )}
+          <p className="text-sm font-mono">
+          Código do cliente: <strong>{client.codigo}</strong>
+        </p>
         </div>
       ),
-      duration: 3000,
+      duration: 5000,
     });
 
     setCpfOrCode("");

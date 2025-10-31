@@ -68,8 +68,8 @@ const Index = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <Tabs defaultValue="dashboard" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6 h-auto">
+        <Tabs defaultValue="dashboard" className="space-y-5">
+          <TabsList className="grid w-full grid-cols-5 h-auto">
             <TabsTrigger value="dashboard" className="text-base py-3">
               Dashboard
             </TabsTrigger>
@@ -85,9 +85,9 @@ const Index = () => {
             <TabsTrigger value="historico" className="text-base py-3">
               Histórico
             </TabsTrigger>
-            <TabsTrigger value="promocoes" className="text-base py-3">
+            {/* <TabsTrigger value="promocoes" className="text-base py-3">
               Promoções
-            </TabsTrigger>
+            </TabsTrigger> */}
           </TabsList>
 
           <TabsContent value="dashboard" className="space-y-6">
