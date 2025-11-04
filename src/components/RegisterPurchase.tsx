@@ -231,7 +231,7 @@ export const RegisterPurchase = () => {
         </p>
         </div>
       ),
-      duration: 5000,
+      duration: 1500,
     });
 
     setCpfOrCode("");

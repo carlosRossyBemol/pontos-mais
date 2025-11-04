@@ -110,7 +110,7 @@ export const WithdrawBonus = () => {
             <p className="text-sm">Pontos restantes: {novosPontos.toFixed(0)}</p>
           </div>
         ),
-        duration: 3000,
+        duration: 1500,
       });
 
       setTimeout(() => {

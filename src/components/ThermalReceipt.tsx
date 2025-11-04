@@ -97,7 +97,8 @@ export const ThermalReceipt = ({
             background: white;
           }
           .page-break {
-            break-after: page;
+            page-break-after: always;
+            break-after: page; 
           }
           @page {
             size: 80mm auto;

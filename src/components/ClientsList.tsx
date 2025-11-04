@@ -41,6 +41,17 @@ export const ClientsList = () => {
       client.codigo.includes(searchTerm)
   );
 
+  function formatPhone(phone: string) {
+  const cleaned = phone.replace(/\D/g, "");
+  if (cleaned.length === 11) {
+    return cleaned.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+  }
+  if (cleaned.length === 10) {
+    return cleaned.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+  }
+  return phone;
+}
+
   return (
     <Card>
       <CardHeader>
@@ -101,7 +112,7 @@ export const ClientsList = () => {
                         {client.codigo}
                       </Badge>
                     </TableCell>
-                    <TableCell>{client.telefone}</TableCell>
+                    <TableCell>{formatPhone(client.telefone)}</TableCell>
                     <TableCell className="text-right font-semibold text-accent">
                       {client.pontos}
                     </TableCell>
